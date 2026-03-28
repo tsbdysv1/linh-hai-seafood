@@ -17,6 +17,8 @@ export const siteConfig = {
     title: 'Linh Hải Seafood | Hải sản tươi ngon, đặt hàng nhanh',
     description:
       'Landing page kỹ thuật cho Linh Hải Seafood với catalog sản phẩm, CTA liên hệ và nền tảng sẵn sàng mở rộng cho nội dung thật.',
+    defaultImage:
+      'https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=1200&q=80',
   },
   defaultJsonLd: {
     '@context': 'https://schema.org',

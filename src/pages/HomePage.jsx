@@ -8,6 +8,8 @@ function HomePage() {
     title: siteConfig.seo.title,
     description: siteConfig.seo.description,
     jsonLd: siteConfig.defaultJsonLd,
+    pathname: '/',
+    image: siteConfig.seo.defaultImage,
   })
 
   return (

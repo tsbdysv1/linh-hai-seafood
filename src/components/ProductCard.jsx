@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { siteConfig } from '../data/site'
+import { getDisplayPrice } from '../data/products'
+import { buildZaloProductLink } from '../utils/commerce'
 
 function ProductCard({ product }) {
   return (
@@ -9,7 +10,7 @@ function ProductCard({ product }) {
         <p className="product-category">{product.category}</p>
         <h3>{product.name}</h3>
         <p className="product-description">{product.shortDescription}</p>
-        <p className="product-price">{product.price}</p>
+        <p className="product-price">{getDisplayPrice(product)}</p>
         <p className="product-stock">
           Còn <strong>{product.stock}</strong> {product.unit}
         </p>
@@ -17,8 +18,13 @@ function ProductCard({ product }) {
           <Link to={`/san-pham/${product.slug}`} className="solid-button small-button">
             Xem chi tiết
           </Link>
-          <a href={siteConfig.zaloLink} target="_blank" rel="noreferrer" className="outline-button small-button">
-            Đặt qua Zalo
+          <a
+            href={buildZaloProductLink(product)}
+            target="_blank"
+            rel="noreferrer"
+            className="outline-button small-button"
+          >
+            Hỏi qua Zalo
           </a>
         </div>
       </div>

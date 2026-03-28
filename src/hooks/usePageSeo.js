@@ -1,12 +1,24 @@
 import { useEffect } from 'react'
 import { siteConfig } from '../data/site'
 
-function ensureMetaTag(name) {
-  let tag = document.querySelector(`meta[name="${name}"]`)
+function ensureNamedMetaTag(attr, value) {
+  let tag = document.querySelector(`meta[${attr}="${value}"]`)
 
   if (!tag) {
     tag = document.createElement('meta')
-    tag.setAttribute('name', name)
+    tag.setAttribute(attr, value)
+    document.head.appendChild(tag)
+  }
+
+  return tag
+}
+
+function ensureLinkTag(rel) {
+  let tag = document.querySelector(`link[rel="${rel}"]`)
+
+  if (!tag) {
+    tag = document.createElement('link')
+    tag.setAttribute('rel', rel)
     document.head.appendChild(tag)
   }
 
@@ -26,16 +38,55 @@ function ensureJsonLdTag() {
   return tag
 }
 
-export function usePageSeo({ title, description, jsonLd }) {
-  useEffect(() => {
-    document.title = title || siteConfig.seo.title
+function buildCanonicalUrl(pathname = '/') {
+  const normalizedPathname = pathname === '/' ? '' : pathname
+  return `${siteConfig.siteUrl}${normalizedPathname}`
+}
 
-    const descriptionTag = ensureMetaTag('description')
-    descriptionTag.setAttribute('content', description || siteConfig.seo.description)
+export function usePageSeo({ title, description, jsonLd, pathname = '/', image = siteConfig.seo.defaultImage }) {
+  useEffect(() => {
+    const resolvedTitle = title || siteConfig.seo.title
+    const resolvedDescription = description || siteConfig.seo.description
+    const canonicalUrl = buildCanonicalUrl(pathname)
+
+    document.title = resolvedTitle
+
+    const descriptionTag = ensureNamedMetaTag('name', 'description')
+    descriptionTag.setAttribute('content', resolvedDescription)
+
+    const ogTitleTag = ensureNamedMetaTag('property', 'og:title')
+    ogTitleTag.setAttribute('content', resolvedTitle)
+
+    const ogDescriptionTag = ensureNamedMetaTag('property', 'og:description')
+    ogDescriptionTag.setAttribute('content', resolvedDescription)
+
+    const ogTypeTag = ensureNamedMetaTag('property', 'og:type')
+    ogTypeTag.setAttribute('content', pathname === '/' ? 'website' : 'product')
+
+    const ogUrlTag = ensureNamedMetaTag('property', 'og:url')
+    ogUrlTag.setAttribute('content', canonicalUrl)
+
+    const ogImageTag = ensureNamedMetaTag('property', 'og:image')
+    ogImageTag.setAttribute('content', image)
+
+    const twitterCardTag = ensureNamedMetaTag('name', 'twitter:card')
+    twitterCardTag.setAttribute('content', 'summary_large_image')
+
+    const twitterTitleTag = ensureNamedMetaTag('name', 'twitter:title')
+    twitterTitleTag.setAttribute('content', resolvedTitle)
+
+    const twitterDescriptionTag = ensureNamedMetaTag('name', 'twitter:description')
+    twitterDescriptionTag.setAttribute('content', resolvedDescription)
+
+    const twitterImageTag = ensureNamedMetaTag('name', 'twitter:image')
+    twitterImageTag.setAttribute('content', image)
+
+    const canonicalTag = ensureLinkTag('canonical')
+    canonicalTag.setAttribute('href', canonicalUrl)
 
     const jsonLdTag = ensureJsonLdTag()
     jsonLdTag.textContent = JSON.stringify(jsonLd || siteConfig.defaultJsonLd)
 
     window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [description, jsonLd, title])
+  }, [description, image, jsonLd, pathname, title])
 }

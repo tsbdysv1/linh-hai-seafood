@@ -25,6 +25,12 @@ This project is already:
 
 The current codebase intentionally uses placeholder business data in some places while the technical foundation is being built.
 
+Recent polish work also added:
+- reusable SEO/meta plumbing for page-level title, description, canonical, Open Graph, and Twitter tags
+- cleaner product commerce helpers for phone links, Zalo inquiry links, and display pricing
+- improved 404 recovery CTAs
+- cleanup of unused starter assets
+
 ## Project files worth reading first
 
 - `PROJECT_CONTEXT.md` — design/dev history and reasoning so far

@@ -13,6 +13,8 @@ function ProductDetailPage() {
     title: product ? `${product.name} | ${siteConfig.brandName}` : `Sản phẩm | ${siteConfig.brandName}`,
     description: product ? product.shortDescription : siteConfig.seo.description,
     jsonLd: product ? buildProductJsonLd(product) : siteConfig.defaultJsonLd,
+    pathname: product ? `/san-pham/${product.slug}` : '/san-pham',
+    image: product ? product.image : siteConfig.seo.defaultImage,
   })
 
   if (!product) {

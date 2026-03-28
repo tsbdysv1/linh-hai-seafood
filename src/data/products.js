@@ -1,8 +1,11 @@
+import { formatPriceLabel } from '../utils/commerce'
+
 export const products = [
   {
     slug: 'muc-mot-nang',
     name: 'Mực một nắng',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản 1 nắng & khô',
@@ -21,7 +24,8 @@ export const products = [
   {
     slug: 'tom-su-bien',
     name: 'Tôm sú biển',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản tươi sống',
@@ -40,7 +44,8 @@ export const products = [
   {
     slug: 'cua-bien',
     name: 'Cua biển',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản tươi sống',
@@ -59,7 +64,8 @@ export const products = [
   {
     slug: 'ca-chim-bien',
     name: 'Cá chim biển',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản đông lạnh',
@@ -78,7 +84,8 @@ export const products = [
   {
     slug: 'oc-huong',
     name: 'Ốc hương',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản tươi sống',
@@ -97,7 +104,8 @@ export const products = [
   {
     slug: 'ca-phong-sinh',
     name: 'Cá phóng sinh',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản phóng sinh',
@@ -114,6 +122,10 @@ export const products = [
     sourcingNote: 'Placeholder content — sẽ thay bằng thông tin nguồn hàng thật sau.',
   },
 ]
+
+export function getDisplayPrice(product) {
+  return formatPriceLabel(product)
+}
 
 export function getProductBySlug(slug) {
   return products.find((product) => product.slug === slug)
@@ -141,7 +153,7 @@ export function buildProductJsonLd(product) {
     offers: {
       '@type': 'Offer',
       priceCurrency: 'VND',
-      price: product.price,
+      price: product.priceValue,
       availability: 'https://schema.org/InStock',
     },
   }
