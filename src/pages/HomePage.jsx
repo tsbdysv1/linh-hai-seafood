@@ -1,9 +1,12 @@
 import ProductCard from '../components/ProductCard'
 import { categories, siteConfig } from '../data/site'
-import { products } from '../data/products'
+import { getFeaturedProducts, productContentGuide } from '../data/products'
 import { usePageSeo } from '../hooks/usePageSeo'
+import { buildPhoneHref } from '../utils/commerce'
 
 function HomePage() {
+  const featuredProducts = getFeaturedProducts()
+
   usePageSeo({
     title: siteConfig.seo.title,
     description: siteConfig.seo.description,
@@ -29,7 +32,7 @@ function HomePage() {
           </div>
 
           <div className="quick-actions">
-            <a href={`tel:${siteConfig.phoneNumber.replace(/\s+/g, '')}`} className="outline-button">
+            <a href={buildPhoneHref(siteConfig.phoneNumber)} className="outline-button">
               Gọi ngay
             </a>
             <a href={siteConfig.zaloLink} target="_blank" rel="noreferrer" className="solid-button">
@@ -100,13 +103,27 @@ function HomePage() {
           <div className="section-heading">
             <p className="eyebrow">Sản phẩm nổi bật</p>
             <h2>Catalog demo đã có route chi tiết cho từng sản phẩm</h2>
+            <p className="section-supporting-text">{productContentGuide.placeholderNote}</p>
           </div>
 
           <div className="product-grid">
-            {products.map((product) => (
+            {featuredProducts.map((product) => (
               <ProductCard key={product.slug} product={product} />
             ))}
           </div>
+        </section>
+
+        <section className="section-block readiness-section">
+          <div className="section-heading">
+            <p className="eyebrow">Content-ready structure</p>
+            <h2>{siteConfig.contentReadiness.title}</h2>
+            <p className="section-supporting-text">{siteConfig.contentReadiness.description}</p>
+          </div>
+          <ul className="readiness-checklist">
+            {siteConfig.contentReadiness.checklist.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </section>
 
         <section className="section-block contact-section" id="lien-he">
@@ -123,7 +140,7 @@ function HomePage() {
               <a href={siteConfig.zaloLink} target="_blank" rel="noreferrer" className="solid-button">
                 Zalo: {siteConfig.zaloLabel}
               </a>
-              <a href={`tel:${siteConfig.phoneNumber.replace(/\s+/g, '')}`} className="outline-button">
+              <a href={buildPhoneHref(siteConfig.phoneNumber)} className="outline-button">
                 SĐT: {siteConfig.phoneNumber}
               </a>
             </div>

@@ -13,6 +13,16 @@ export const siteConfig = {
     'Có trang chi tiết cho từng sản phẩm',
     'Dễ thay dữ liệu thật sau này',
   ],
+  contentReadiness: {
+    title: 'Cấu trúc đã sẵn để thay nội dung thật dần dần',
+    description:
+      'Website hiện dùng dữ liệu demo có chủ đích, nhưng phần route, CTA, SEO cơ bản và cấu trúc nội dung đã được chia rõ để sau này chỉ cần thay dữ liệu thật chứ không phải đập lại giao diện.',
+    checklist: [
+      'Có thể thay sản phẩm từng món một',
+      'Có chỗ riêng cho giá, badge, món gợi ý và mô tả bán hàng',
+      'Có thể cập nhật business info sau mà không ảnh hưởng flow kỹ thuật',
+    ],
+  },
   seo: {
     title: 'Linh Hải Seafood | Hải sản tươi ngon, đặt hàng nhanh',
     description:

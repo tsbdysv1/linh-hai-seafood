@@ -1,9 +1,10 @@
 import { Navigate, useParams } from 'react-router-dom'
 import Breadcrumbs from '../components/Breadcrumbs'
 import RelatedProducts from '../components/RelatedProducts'
-import { buildProductJsonLd, getProductBySlug, getRelatedProducts } from '../data/products'
+import { buildProductJsonLd, getDisplayPrice, getProductBySlug, getRelatedProducts, productContentGuide } from '../data/products'
 import { siteConfig } from '../data/site'
 import { usePageSeo } from '../hooks/usePageSeo'
+import { buildPhoneHref, buildZaloProductLink } from '../utils/commerce'
 
 function ProductDetailPage() {
   const { slug } = useParams()
@@ -42,11 +43,20 @@ function ProductDetailPage() {
           <p className="eyebrow">{product.category}</p>
           <h1>{product.name}</h1>
           <p className="product-detail-description">{product.shortDescription}</p>
+          <p className="product-sales-pitch">{product.salesPitch}</p>
+
+          <div className="product-badge-row" aria-label="Điểm nổi bật của sản phẩm">
+            {product.badges.map((badge) => (
+              <span key={badge} className="product-badge">
+                {badge}
+              </span>
+            ))}
+          </div>
 
           <div className="product-detail-meta">
             <div className="detail-pill">
               <span>Giá demo</span>
-              <strong>{product.price}</strong>
+              <strong>{getDisplayPrice(product)}</strong>
             </div>
             <div className="detail-pill">
               <span>Tồn kho demo</span>
@@ -57,10 +67,10 @@ function ProductDetailPage() {
           </div>
 
           <div className="product-detail-actions">
-            <a href={siteConfig.zaloLink} target="_blank" rel="noreferrer" className="solid-button">
-              Đặt qua Zalo
+            <a href={buildZaloProductLink(product)} target="_blank" rel="noreferrer" className="solid-button">
+              Hỏi sản phẩm này qua Zalo
             </a>
-            <a href={`tel:${siteConfig.phoneNumber.replace(/\s+/g, '')}`} className="outline-button">
+            <a href={buildPhoneHref(siteConfig.phoneNumber)} className="outline-button">
               Gọi để hỏi hàng
             </a>
           </div>
@@ -73,6 +83,18 @@ function ProductDetailPage() {
 
       <section className="section-block detail-content-grid">
         <article className="detail-panel">
+          <p className="eyebrow">Trạng thái nội dung</p>
+          <h2>{productContentGuide.placeholderLabel}</h2>
+          <p>{productContentGuide.placeholderNote}</p>
+          <ul className="detail-list">
+            <li>Trạng thái hiện tại: {product.placeholderStatus}</li>
+            {product.bestFor.map((item) => (
+              <li key={item}>Phù hợp với: {item}</li>
+            ))}
+          </ul>
+        </article>
+
+        <article className="detail-panel">
           <p className="eyebrow">Điểm nổi bật</p>
           <h2>Tốt cho sức khỏe và dễ kể câu chuyện bán hàng hơn</h2>
           <ul className="detail-list">
@@ -81,7 +103,9 @@ function ProductDetailPage() {
             ))}
           </ul>
         </article>
+      </section>
 
+      <section className="section-block detail-content-grid secondary-grid">
         <article className="detail-panel">
           <p className="eyebrow">Gợi ý chế biến</p>
           <h2>Một trang riêng giúp shop tư vấn món dễ hơn</h2>
@@ -91,14 +115,14 @@ function ProductDetailPage() {
             ))}
           </ul>
         </article>
-      </section>
 
-      <section className="section-block detail-content-grid secondary-grid">
         <article className="detail-panel">
           <p className="eyebrow">Bảo quản</p>
           <p>{product.storage}</p>
         </article>
+      </section>
 
+      <section className="section-block detail-content-grid secondary-grid">
         <article className="detail-panel">
           <p className="eyebrow">Nguồn hàng</p>
           <p>{product.sourcingNote}</p>

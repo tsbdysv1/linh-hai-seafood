@@ -12,6 +12,10 @@ export const products = [
     image:
       'https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=1200&q=80',
     shortDescription: 'Thịt dày, ngọt đậm, phù hợp nướng mọi hoặc chiên nước mắm.',
+    salesPitch: 'Hợp cho khách muốn món nhanh, dễ làm nhưng vẫn ra bàn ăn đẹp và đậm vị biển.',
+    bestFor: ['Bữa cơm gia đình', 'Nướng cuối tuần', 'Biếu tặng dạng hải sản khô cao cấp'],
+    badges: ['Bán chạy demo', 'Dễ chế biến', 'Đậm vị'],
+    placeholderStatus: 'demo-content',
     healthBenefits: [
       'Cung cấp đạm biển chất lượng cao, phù hợp cho bữa ăn giàu protein.',
       'Có thể bổ sung khoáng chất tự nhiên từ hải sản biển.',
@@ -32,6 +36,10 @@ export const products = [
     image:
       'https://images.unsplash.com/photo-1565680018434-b513d92b92b3?auto=format&fit=crop&w=1200&q=80',
     shortDescription: 'Tôm chắc thịt, dễ chế biến, hợp nướng, hấp, rang muối.',
+    salesPitch: 'Một lựa chọn an toàn, đẹp mắt và dễ bán cho nhóm khách gia đình lẫn đãi khách.',
+    bestFor: ['Hấp sả', 'Nướng bơ tỏi', 'Mâm tiệc gia đình'],
+    badges: ['Dễ bán demo', 'Hình thức đẹp', 'Đa dụng'],
+    placeholderStatus: 'demo-content',
     healthBenefits: [
       'Giàu protein và phù hợp cho nhiều kiểu ăn gia đình.',
       'Dễ kết hợp với rau củ để cân bằng bữa ăn.',
@@ -52,6 +60,10 @@ export const products = [
     image:
       'https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?auto=format&fit=crop&w=1200&q=80',
     shortDescription: 'Thịt cua ngọt, chắc và hợp các món hấp, rang me, nấu lẩu.',
+    salesPitch: 'Nhóm sản phẩm hợp cho khách muốn cảm giác cao cấp và dễ nâng giá trị đơn hàng.',
+    bestFor: ['Cuối tuần', 'Đãi khách', 'Lẩu và món sốt'],
+    badges: ['Cao cấp demo', 'Tiệc cuối tuần', 'Thịt chắc'],
+    placeholderStatus: 'demo-content',
     healthBenefits: [
       'Mang lại cảm giác bữa ăn cao cấp và giàu dinh dưỡng.',
       'Phù hợp cho các món gia đình cuối tuần hoặc tiếp khách.',
@@ -72,6 +84,10 @@ export const products = [
     image:
       'https://images.unsplash.com/photo-1544943910-4c1dc44aab44?auto=format&fit=crop&w=1200&q=80',
     shortDescription: 'Thịt cá mềm, thơm, hợp chiên sả ớt hoặc hấp xì dầu.',
+    salesPitch: 'Phù hợp cho nhóm khách muốn món cá dễ ăn, dễ nấu và không quá kén khẩu vị.',
+    bestFor: ['Bữa cơm thường ngày', 'Món cá hấp', 'Món cá chiên'],
+    badges: ['Dễ ăn', 'Gia đình', 'Tiện nấu'],
+    placeholderStatus: 'demo-content',
     healthBenefits: [
       'Là lựa chọn dễ ăn cho cả người lớn lẫn trẻ em.',
       'Có thể dùng trong bữa cơm thường ngày hoặc món đãi khách.',
@@ -92,6 +108,10 @@ export const products = [
     image:
       'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=1200&q=80',
     shortDescription: 'Ốc giòn ngọt, hợp hấp sả, rang muối và sốt bơ cay.',
+    salesPitch: 'Nhóm sản phẩm hợp để kéo cảm giác “quán hải sản tại nhà” và tăng hứng thú đặt món.',
+    bestFor: ['Tụ họp cuối tuần', 'Món nhâm nhi', 'Sốt đậm vị'],
+    badges: ['Nhâm nhi', 'Đậm vị', 'Cuối tuần'],
+    placeholderStatus: 'demo-content',
     healthBenefits: [
       'Mang lại trải nghiệm món ốc đậm chất quán hải sản tại nhà.',
       'Phù hợp cho các bữa tụ họp, nhâm nhi cuối tuần.',
@@ -112,6 +132,10 @@ export const products = [
     image:
       'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?auto=format&fit=crop&w=1200&q=80',
     shortDescription: 'Danh mục riêng phục vụ nhu cầu chọn cá phù hợp cho mục đích phóng sinh.',
+    salesPitch: 'Đây là nhóm nhu cầu đặc thù, nên cần nội dung rõ mục đích sử dụng và cách giao nhận.',
+    bestFor: ['Nhu cầu phóng sinh', 'Trao đổi trước khi giao', 'Chọn loại phù hợp mục đích'],
+    badges: ['Danh mục riêng', 'Đặc thù', 'Tư vấn trước'],
+    placeholderStatus: 'demo-content',
     healthBenefits: [
       'Trang chi tiết loại này hiện thiên về mục đích sử dụng thay vì dinh dưỡng.',
       'Giúp khách xem nhanh thông tin trước khi liên hệ chọn loại phù hợp.',
@@ -122,6 +146,12 @@ export const products = [
     sourcingNote: 'Placeholder content — sẽ thay bằng thông tin nguồn hàng thật sau.',
   },
 ]
+
+export const productContentGuide = {
+  placeholderLabel: 'Nội dung demo kỹ thuật',
+  placeholderNote:
+    'Thông tin bên dưới hiện là nội dung demo để hoàn thiện cấu trúc website. Khi có dữ liệu thật, có thể thay từng phần mà không cần đổi layout.',
+}
 
 export function getDisplayPrice(product) {
   return formatPriceLabel(product)
@@ -140,6 +170,10 @@ export function getRelatedProducts(currentProduct, limit = 3) {
       return rightScore - leftScore
     })
     .slice(0, limit)
+}
+
+export function getFeaturedProducts(limit = 3) {
+  return products.slice(0, limit)
 }
 
 export function buildProductJsonLd(product) {

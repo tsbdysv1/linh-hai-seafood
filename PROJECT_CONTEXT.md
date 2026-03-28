@@ -60,6 +60,16 @@ That round adds:
 - `vercel.json` SPA rewrites so deep links resolve to `index.html`
 - a deployment config note in the README so future collaborators do not accidentally remove the rewrite behavior
 
+### Phase 5 — content-ready data model pass
+After routing was stable, Rooney continued with a pass focused on making the demo catalog easier to replace with real merchant content later.
+
+That round includes:
+- expanding product objects with `salesPitch`, `bestFor`, `badges`, and `placeholderStatus`
+- introducing shared placeholder guidance text for content sections
+- switching the homepage catalog section to featured products instead of always rendering the full list
+- adding a dedicated readiness section explaining how the current demo content maps to future real content updates
+- improving product detail pages so they better reflect future merchant-ready content structure while still using safe demo data
+
 ## Design / product direction so far
 
 The current design direction is:

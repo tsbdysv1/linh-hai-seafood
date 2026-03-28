@@ -30,6 +30,7 @@ Recent polish work also added:
 - cleaner product commerce helpers for phone links, Zalo inquiry links, and display pricing
 - improved 404 recovery CTAs
 - cleanup of unused starter assets
+- more content-ready product data fields such as sales pitch, badges, best-for lists, and placeholder-state messaging
 
 ## Project files worth reading first
 

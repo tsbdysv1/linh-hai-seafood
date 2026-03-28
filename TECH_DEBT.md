@@ -23,6 +23,9 @@ For each product detail page, we still need real merchant-approved content for:
 - sourcing notes
 - storage guidance
 - availability / seasonality
+- final sales pitch copy
+- real badges / selling points
+- clear use-case or best-for notes per product
 
 ## Technical follow-up ideas
 
