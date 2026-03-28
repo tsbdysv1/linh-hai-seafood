@@ -1,22 +1,35 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { getProductBySlug } from '../data/products'
+import Breadcrumbs from '../components/Breadcrumbs'
+import RelatedProducts from '../components/RelatedProducts'
+import { buildProductJsonLd, getProductBySlug, getRelatedProducts } from '../data/products'
 import { siteConfig } from '../data/site'
+import { usePageSeo } from '../hooks/usePageSeo'
 
 function ProductDetailPage() {
   const { slug } = useParams()
   const product = getProductBySlug(slug)
 
+  usePageSeo({
+    title: product ? `${product.name} | ${siteConfig.brandName}` : `Sản phẩm | ${siteConfig.brandName}`,
+    description: product ? product.shortDescription : siteConfig.seo.description,
+    jsonLd: product ? buildProductJsonLd(product) : siteConfig.defaultJsonLd,
+  })
+
   if (!product) {
-    return <Navigate to="/" replace />
+    return <Navigate to="/khong-tim-thay" replace />
   }
+
+  const relatedProducts = getRelatedProducts(product)
 
   return (
     <div className="page-shell product-detail-shell">
-      <div className="breadcrumb-row">
-        <Link to="/" className="breadcrumb-link">
-          ← Về trang chủ
-        </Link>
-      </div>
+      <Breadcrumbs
+        items={[
+          { label: 'Trang chủ', to: '/' },
+          { label: 'Sản phẩm', to: '/#san-pham' },
+          { label: product.name },
+        ]}
+      />
 
       <section className="section-block product-detail-layout">
         <div className="product-detail-media">
@@ -49,6 +62,10 @@ function ProductDetailPage() {
               Gọi để hỏi hàng
             </a>
           </div>
+
+          <Link to="/#san-pham" className="inline-return-link">
+            ← Quay lại catalog sản phẩm
+          </Link>
         </div>
       </section>
 
@@ -85,6 +102,8 @@ function ProductDetailPage() {
           <p>{product.sourcingNote}</p>
         </article>
       </section>
+
+      <RelatedProducts products={relatedProducts} />
     </div>
   )
 }

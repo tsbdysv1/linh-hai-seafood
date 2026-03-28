@@ -118,3 +118,31 @@ export const products = [
 export function getProductBySlug(slug) {
   return products.find((product) => product.slug === slug)
 }
+
+export function getRelatedProducts(currentProduct, limit = 3) {
+  return products
+    .filter((product) => product.slug !== currentProduct.slug)
+    .sort((left, right) => {
+      const leftScore = left.category === currentProduct.category ? 1 : 0
+      const rightScore = right.category === currentProduct.category ? 1 : 0
+      return rightScore - leftScore
+    })
+    .slice(0, limit)
+}
+
+export function buildProductJsonLd(product) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.shortDescription,
+    image: [product.image],
+    category: product.category,
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'VND',
+      price: product.price,
+      availability: 'https://schema.org/InStock',
+    },
+  }
+}
