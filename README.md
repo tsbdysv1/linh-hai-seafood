@@ -60,4 +60,5 @@ npm run lint
 ## Notes
 
 - Business info like phone, Zalo, address, hours, and real product data are still pending final confirmation.
+- React Router routes on Vercel require SPA rewrites; this repo now includes `vercel.json` so deep links resolve to the app instead of Vercel 404 pages.
 - The preferred workflow so far is: branch -> PR -> Vercel preview -> merge to `main`.

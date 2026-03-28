@@ -53,6 +53,13 @@ That round included:
 - improving 404 recovery with direct paths back to catalog and contact CTA
 - removing unused starter assets from the repo
 
+### Phase 4 — production routing fix
+After QA on the live deployment, Rooney found that direct visits to nested routes like `/san-pham/:slug` were returning Vercel 404 pages instead of loading the React app.
+
+That round adds:
+- `vercel.json` SPA rewrites so deep links resolve to `index.html`
+- a deployment config note in the README so future collaborators do not accidentally remove the rewrite behavior
+
 ## Design / product direction so far
 
 The current design direction is:
