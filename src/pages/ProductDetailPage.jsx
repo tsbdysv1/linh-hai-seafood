@@ -1,22 +1,37 @@
-import { Link, Navigate, useParams } from 'react-router-dom'
-import { getProductBySlug } from '../data/products'
+import { Navigate, useParams } from 'react-router-dom'
+import Breadcrumbs from '../components/Breadcrumbs'
+import RelatedProducts from '../components/RelatedProducts'
+import { buildProductJsonLd, getProductBySlug, getRelatedProducts } from '../data/products'
 import { siteConfig } from '../data/site'
+import { usePageSeo } from '../hooks/usePageSeo'
 
 function ProductDetailPage() {
   const { slug } = useParams()
   const product = getProductBySlug(slug)
 
+  usePageSeo({
+    title: product ? `${product.name} | ${siteConfig.brandName}` : `Sản phẩm | ${siteConfig.brandName}`,
+    description: product ? product.shortDescription : siteConfig.seo.description,
+    jsonLd: product ? buildProductJsonLd(product) : siteConfig.defaultJsonLd,
+    pathname: product ? `/san-pham/${product.slug}` : '/san-pham',
+    image: product ? product.image : siteConfig.seo.defaultImage,
+  })
+
   if (!product) {
-    return <Navigate to="/" replace />
+    return <Navigate to="/khong-tim-thay" replace />
   }
+
+  const relatedProducts = getRelatedProducts(product)
 
   return (
     <div className="page-shell product-detail-shell">
-      <div className="breadcrumb-row">
-        <Link to="/" className="breadcrumb-link">
-          ← Về trang chủ
-        </Link>
-      </div>
+      <Breadcrumbs
+        items={[
+          { label: 'Trang chủ', to: '/' },
+          { label: 'Sản phẩm', to: '/#san-pham' },
+          { label: product.name },
+        ]}
+      />
 
       <section className="section-block product-detail-layout">
         <div className="product-detail-media">
@@ -49,6 +64,10 @@ function ProductDetailPage() {
               Gọi để hỏi hàng
             </a>
           </div>
+
+          <a href="/#san-pham" className="inline-return-link">
+            ← Quay lại catalog sản phẩm
+          </a>
         </div>
       </section>
 
@@ -85,6 +104,8 @@ function ProductDetailPage() {
           <p>{product.sourcingNote}</p>
         </article>
       </section>
+
+      <RelatedProducts products={relatedProducts} />
     </div>
   )
 }

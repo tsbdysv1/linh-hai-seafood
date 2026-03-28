@@ -27,7 +27,9 @@ For each product detail page, we still need real merchant-approved content for:
 ## Technical follow-up ideas
 
 - Replace placeholder product info with real catalog data
+- Replace remote placeholder product images with local brand-approved assets or a managed image workflow
 - Add image optimization / local assets strategy
 - Consider CMS or simple JSON admin workflow for product updates
 - Add analytics if needed
-- Add structured data for LocalBusiness/Product when final content is ready
+- Add richer structured data for LocalBusiness/Product when final content is ready
+- Consider a better social sharing image strategy instead of relying on product placeholder imagery

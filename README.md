@@ -25,6 +25,12 @@ This project is already:
 
 The current codebase intentionally uses placeholder business data in some places while the technical foundation is being built.
 
+Recent polish work also added:
+- reusable SEO/meta plumbing for page-level title, description, canonical, Open Graph, and Twitter tags
+- cleaner product commerce helpers for phone links, Zalo inquiry links, and display pricing
+- improved 404 recovery CTAs
+- cleanup of unused starter assets
+
 ## Project files worth reading first
 
 - `PROJECT_CONTEXT.md` — design/dev history and reasoning so far
@@ -54,4 +60,5 @@ npm run lint
 ## Notes
 
 - Business info like phone, Zalo, address, hours, and real product data are still pending final confirmation.
+- React Router routes on Vercel require SPA rewrites; this repo now includes `vercel.json` so deep links resolve to the app instead of Vercel 404 pages.
 - The preferred workflow so far is: branch -> PR -> Vercel preview -> merge to `main`.

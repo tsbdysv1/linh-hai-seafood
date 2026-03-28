@@ -1,8 +1,11 @@
+import { formatPriceLabel } from '../utils/commerce'
+
 export const products = [
   {
     slug: 'muc-mot-nang',
     name: 'Mực một nắng',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản 1 nắng & khô',
@@ -21,7 +24,8 @@ export const products = [
   {
     slug: 'tom-su-bien',
     name: 'Tôm sú biển',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản tươi sống',
@@ -40,7 +44,8 @@ export const products = [
   {
     slug: 'cua-bien',
     name: 'Cua biển',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản tươi sống',
@@ -59,7 +64,8 @@ export const products = [
   {
     slug: 'ca-chim-bien',
     name: 'Cá chim biển',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản đông lạnh',
@@ -78,7 +84,8 @@ export const products = [
   {
     slug: 'oc-huong',
     name: 'Ốc hương',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản tươi sống',
@@ -97,7 +104,8 @@ export const products = [
   {
     slug: 'ca-phong-sinh',
     name: 'Cá phóng sinh',
-    price: '100.000đ / 1kg',
+    priceValue: 100000,
+    priceSuffix: '/ 1kg',
     stock: 50,
     unit: 'kg',
     category: 'Hải sản phóng sinh',
@@ -115,6 +123,38 @@ export const products = [
   },
 ]
 
+export function getDisplayPrice(product) {
+  return formatPriceLabel(product)
+}
+
 export function getProductBySlug(slug) {
   return products.find((product) => product.slug === slug)
+}
+
+export function getRelatedProducts(currentProduct, limit = 3) {
+  return products
+    .filter((product) => product.slug !== currentProduct.slug)
+    .sort((left, right) => {
+      const leftScore = left.category === currentProduct.category ? 1 : 0
+      const rightScore = right.category === currentProduct.category ? 1 : 0
+      return rightScore - leftScore
+    })
+    .slice(0, limit)
+}
+
+export function buildProductJsonLd(product) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.shortDescription,
+    image: [product.image],
+    category: product.category,
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'VND',
+      price: product.priceValue,
+      availability: 'https://schema.org/InStock',
+    },
+  }
 }

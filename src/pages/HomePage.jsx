@@ -1,8 +1,17 @@
+import ProductCard from '../components/ProductCard'
 import { categories, siteConfig } from '../data/site'
 import { products } from '../data/products'
-import ProductCard from '../components/ProductCard'
+import { usePageSeo } from '../hooks/usePageSeo'
 
 function HomePage() {
+  usePageSeo({
+    title: siteConfig.seo.title,
+    description: siteConfig.seo.description,
+    jsonLd: siteConfig.defaultJsonLd,
+    pathname: '/',
+    image: siteConfig.seo.defaultImage,
+  })
+
   return (
     <div className="page-shell">
       <header className="hero-section">

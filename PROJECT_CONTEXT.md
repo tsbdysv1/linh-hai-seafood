@@ -42,6 +42,24 @@ That round included:
 - adding basic SEO title/description handling
 - adding `TECH_DEBT.md` to preserve deferred business info
 
+### Phase 3 — quick polish round
+Rooney continued with a polish pass focused on quality, conversion flow, and maintainability without waiting on deferred business content.
+
+That round included:
+- adding canonical, Open Graph, and Twitter meta handling in the SEO hook
+- making product pages pass pathname/image data into SEO metadata
+- restructuring product pricing data so schema output uses numeric `priceValue`
+- adding small commerce helpers for display price formatting, clean phone links, and product-specific Zalo inquiry links
+- improving 404 recovery with direct paths back to catalog and contact CTA
+- removing unused starter assets from the repo
+
+### Phase 4 — production routing fix
+After QA on the live deployment, Rooney found that direct visits to nested routes like `/san-pham/:slug` were returning Vercel 404 pages instead of loading the React app.
+
+That round adds:
+- `vercel.json` SPA rewrites so deep links resolve to `index.html`
+- a deployment config note in the README so future collaborators do not accidentally remove the rewrite behavior
+
 ## Design / product direction so far
 
 The current design direction is:
