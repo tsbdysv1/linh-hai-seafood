@@ -1,4 +1,4 @@
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import Breadcrumbs from '../components/Breadcrumbs'
 import RelatedProducts from '../components/RelatedProducts'
 import { buildProductJsonLd, getProductBySlug, getRelatedProducts } from '../data/products'
@@ -63,9 +63,9 @@ function ProductDetailPage() {
             </a>
           </div>
 
-          <Link to="/#san-pham" className="inline-return-link">
+          <a href="/#san-pham" className="inline-return-link">
             ← Quay lại catalog sản phẩm
-          </Link>
+          </a>
         </div>
       </section>
 
