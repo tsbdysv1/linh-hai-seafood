@@ -2,31 +2,16 @@ export const siteConfig = {
   brandName: 'Linh Hải Seafood',
   siteUrl: 'https://linh-hai-seafood.vercel.app',
   headline: 'Hải sản tươi ngon, trình bày sang, đặt hàng thật nhanh',
-  heroTitle: 'Website hải sản gọn gàng, hiện đại và sẵn sàng mở rộng theo catalog thật',
-  heroDescription:
-    'Đây là phiên bản kỹ thuật đã được dọn cấu trúc để dễ cập nhật nội dung thật sau này. Rooney giữ lại các placeholder cần thiết nhưng đã chuẩn bị sẵn data layer, trang chi tiết sản phẩm và CTA tốt hơn cho mobile.',
+  heroTitle: 'Hải sản tươi ngon, giao tận nhà',
+  heroDescription: 'Hải sản tươi biển, chọn lọc kỹ — giao tận nhà nhanh và an toàn.',
   phoneNumber: '0900 000 000',
   zaloLabel: '0900 000 000',
   zaloLink: 'https://zalo.me/0900000000',
-  trustPoints: [
-    'Giao diện tối ưu cho điện thoại',
-    'Có trang chi tiết cho từng sản phẩm',
-    'Dễ thay dữ liệu thật sau này',
-  ],
-  contentReadiness: {
-    title: 'Cấu trúc đã sẵn để thay nội dung thật dần dần',
-    description:
-      'Website hiện dùng dữ liệu demo có chủ đích, nhưng phần route, CTA, SEO cơ bản và cấu trúc nội dung đã được chia rõ để sau này chỉ cần thay dữ liệu thật chứ không phải đập lại giao diện.',
-    checklist: [
-      'Có thể thay sản phẩm từng món một',
-      'Có chỗ riêng cho giá, badge, món gợi ý và mô tả bán hàng',
-      'Có thể cập nhật business info sau mà không ảnh hưởng flow kỹ thuật',
-    ],
-  },
+  trustPoints: ['Hải sản tươi mỗi ngày', 'Giao nhanh trong ngày', 'Hỗ trợ Zalo 24/7'],
   seo: {
     title: 'Linh Hải Seafood | Hải sản tươi ngon, đặt hàng nhanh',
     description:
-      'Landing page kỹ thuật cho Linh Hải Seafood với catalog sản phẩm, CTA liên hệ và nền tảng sẵn sàng mở rộng cho nội dung thật.',
+      'Linh Hải Seafood chuyên hải sản tươi ngon, giao nhanh trong ngày và hỗ trợ đặt hàng tiện lợi qua điện thoại hoặc Zalo.',
     defaultImage:
       'https://images.unsplash.com/photo-1510130387422-82bed34b37e9?auto=format&fit=crop&w=1200&q=80',
   },
@@ -36,7 +21,7 @@ export const siteConfig = {
     name: 'Linh Hải Seafood',
     url: 'https://linh-hai-seafood.vercel.app',
     description:
-      'Landing page kỹ thuật cho Linh Hải Seafood với catalog sản phẩm, CTA liên hệ và nền tảng sẵn sàng mở rộng cho nội dung thật.',
+      'Linh Hải Seafood chuyên hải sản tươi ngon, giao nhanh trong ngày và hỗ trợ đặt hàng tiện lợi qua điện thoại hoặc Zalo.',
   },
 }
 

@@ -1,7 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom'
 import Breadcrumbs from '../components/Breadcrumbs'
 import RelatedProducts from '../components/RelatedProducts'
-import { buildProductJsonLd, getDisplayPrice, getProductBySlug, getRelatedProducts, productContentGuide } from '../data/products'
+import { buildProductJsonLd, getDisplayPrice, getProductBySlug, getRelatedProducts } from '../data/products'
 import { siteConfig } from '../data/site'
 import { usePageSeo } from '../hooks/usePageSeo'
 import { buildPhoneHref, buildZaloProductLink } from '../utils/commerce'
@@ -81,19 +81,7 @@ function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="section-block detail-content-grid">
-        <article className="detail-panel">
-          <p className="eyebrow">Trạng thái nội dung</p>
-          <h2>{productContentGuide.placeholderLabel}</h2>
-          <p>{productContentGuide.placeholderNote}</p>
-          <ul className="detail-list">
-            <li>Trạng thái hiện tại: {product.placeholderStatus}</li>
-            {product.bestFor.map((item) => (
-              <li key={item}>Phù hợp với: {item}</li>
-            ))}
-          </ul>
-        </article>
-
+      <section className="section-block detail-content-grid single-column-grid">
         <article className="detail-panel">
           <p className="eyebrow">Điểm nổi bật</p>
           <h2>Tốt cho sức khỏe và dễ kể câu chuyện bán hàng hơn</h2>
@@ -126,6 +114,15 @@ function ProductDetailPage() {
         <article className="detail-panel">
           <p className="eyebrow">Nguồn hàng</p>
           <p>{product.sourcingNote}</p>
+        </article>
+
+        <article className="detail-panel">
+          <p className="eyebrow">Phù hợp cho</p>
+          <ul className="detail-list">
+            {product.bestFor.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </article>
       </section>
 

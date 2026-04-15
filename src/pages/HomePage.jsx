@@ -1,6 +1,6 @@
 import ProductCard from '../components/ProductCard'
 import { categories, siteConfig } from '../data/site'
-import { getFeaturedProducts, productContentGuide } from '../data/products'
+import { getFeaturedProducts } from '../data/products'
 import { usePageSeo } from '../hooks/usePageSeo'
 import { buildPhoneHref } from '../utils/commerce'
 
@@ -16,78 +16,70 @@ function HomePage() {
   })
 
   return (
-    <div className="page-shell">
-      <header className="hero-section">
-        <nav className="topbar">
-          <div className="brand-lockup">
+    <div>
+      <nav className="site-nav">
+        <div className="nav-inner">
+          <a href="/" className="brand-lockup" aria-label="Linh Hải Seafood - Trang chủ">
             <div className="brand-mark" aria-hidden="true">
               <span className="wave wave-one"></span>
               <span className="wave wave-two"></span>
               <span className="brand-fish"></span>
             </div>
             <div>
-              <p className="brand-kicker">{siteConfig.brandName}</p>
-              <h1>{siteConfig.headline}</h1>
+              <p className="brand-kicker">Linh Hải Seafood</p>
+              <strong className="brand-name">Linh Hải Seafood</strong>
             </div>
-          </div>
+          </a>
 
           <div className="quick-actions">
-            <a href={buildPhoneHref(siteConfig.phoneNumber)} className="outline-button">
+            <a href={buildPhoneHref(siteConfig.phoneNumber)} className="outline-button small-button">
               Gọi ngay
             </a>
-            <a href={siteConfig.zaloLink} target="_blank" rel="noreferrer" className="solid-button">
+            <a
+              href={siteConfig.zaloLink}
+              target="_blank"
+              rel="noreferrer"
+              className="solid-button small-button"
+            >
               Đặt qua Zalo
             </a>
           </div>
-        </nav>
+        </div>
+      </nav>
 
-        <div className="hero-grid">
+      <header className="hero-section">
+        <div className="page-shell hero-shell">
           <div className="hero-copy">
-            <p className="eyebrow">Technical foundation</p>
-            <h2>{siteConfig.heroTitle}</h2>
+            <p className="eyebrow">Linh Hải Seafood</p>
+            <h1 className="hero-title">{siteConfig.heroTitle}</h1>
             <p className="hero-text">{siteConfig.heroDescription}</p>
             <div className="hero-cta-row">
               <a href="#san-pham" className="solid-button">
                 Xem sản phẩm
               </a>
-              <a href="#lien-he" className="outline-button">
-                Xem thông tin liên hệ
+              <a href="#lien-he" className="outline-button light-outline-button">
+                Liên hệ ngay
               </a>
             </div>
-            <ul className="trust-points">
-              {siteConfig.trustPoints.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
           </div>
-
-          <aside className="hero-card">
-            <p className="card-label">Product-ready structure</p>
-            <h3>Đã chuẩn bị sẵn trang chi tiết cho từng sản phẩm</h3>
-            <p>
-              Từ đây mình có thể cắm thông tin thật dần dần cho từng mặt hàng: mô tả, lợi ích,
-              món gợi ý, bảo quản và nội dung bán hàng.
-            </p>
-            <div className="logo-preview" aria-hidden="true">
-              <div className="logo-preview-mark">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div>
-                <strong>Linh Hải</strong>
-                <p>SEAFOOD</p>
-              </div>
-            </div>
-          </aside>
         </div>
       </header>
 
-      <main>
+      <section className="trust-bar" aria-label="Lý do khách hàng chọn Linh Hải Seafood">
+        <div className="page-shell trust-bar-inner">
+          {siteConfig.trustPoints.map((point) => (
+            <div key={point} className="trust-item">
+              {point}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <main className="page-shell page-content">
         <section className="section-block">
           <div className="section-heading">
             <p className="eyebrow">Danh mục chính</p>
-            <h2>Thiết kế theo đúng kiểu shop cần bán nhanh, dễ xem, dễ đặt</h2>
+            <h2>Chọn nhanh nhóm hải sản phù hợp nhu cầu gia đình và quán ăn</h2>
           </div>
           <div className="category-grid">
             {categories.map((item) => (
@@ -102,8 +94,11 @@ function HomePage() {
         <section className="section-block" id="san-pham">
           <div className="section-heading">
             <p className="eyebrow">Sản phẩm nổi bật</p>
-            <h2>Catalog demo đã có route chi tiết cho từng sản phẩm</h2>
-            <p className="section-supporting-text">{productContentGuide.placeholderNote}</p>
+            <h2>Một vài mặt hàng được khách hỏi nhiều và dễ đặt ngay trong ngày</h2>
+            <p className="section-supporting-text">
+              Hình ảnh rõ ràng, thông tin ngắn gọn và có trang chi tiết để khách xem nhanh trước khi
+              liên hệ đặt hàng.
+            </p>
           </div>
 
           <div className="product-grid">
@@ -113,27 +108,14 @@ function HomePage() {
           </div>
         </section>
 
-        <section className="section-block readiness-section">
-          <div className="section-heading">
-            <p className="eyebrow">Content-ready structure</p>
-            <h2>{siteConfig.contentReadiness.title}</h2>
-            <p className="section-supporting-text">{siteConfig.contentReadiness.description}</p>
-          </div>
-          <ul className="readiness-checklist">
-            {siteConfig.contentReadiness.checklist.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-
         <section className="section-block contact-section" id="lien-he">
-          <div className="contact-card">
+          <div className="contact-card warm-contact-card">
             <div>
               <p className="eyebrow">Liên hệ đặt hàng</p>
-              <h2>Thông tin business thật sẽ được thay dần sau, còn flow kỹ thuật đã sẵn sàng</h2>
+              <h2>Cần tư vấn nhanh món phù hợp, cứ gọi hoặc nhắn Zalo cho Linh Hải</h2>
               <p>
-                Rooney đã note riêng tech debt cho số điện thoại, Zalo, địa chỉ, giờ mở cửa và dữ
-                liệu sản phẩm thật để mình quay lại hoàn thiện sau.
+                Shop hỗ trợ chọn hải sản theo nhu cầu bữa cơm gia đình, đãi khách hoặc đơn hàng giao
+                trong ngày.
               </p>
             </div>
             <div className="contact-actions">
@@ -141,12 +123,16 @@ function HomePage() {
                 Zalo: {siteConfig.zaloLabel}
               </a>
               <a href={buildPhoneHref(siteConfig.phoneNumber)} className="outline-button">
-                SĐT: {siteConfig.phoneNumber}
+                Gọi: {siteConfig.phoneNumber}
               </a>
             </div>
           </div>
         </section>
       </main>
+
+      <footer className="site-footer">
+        <p>© 2025 Linh Hải Seafood. Mọi quyền được bảo lưu.</p>
+      </footer>
     </div>
   )
 }
